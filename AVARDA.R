@@ -292,18 +292,3 @@ AVARDA = function(case_path,thresh,dict_path,total_path,pairwise_path,blast_path
   fwrite(rbindlist(list(zeta %>% dplyr::select(name, Virus,`P-value`) %>% spread(name,`P-value`,fill = 1),empty_virus)),file = paste0(out_path,out_name,"AVARDA_post_p_value",".csv"))
 }
 
-#
-# setwd("~/Desktop/Desktop/AVARDA_figs/")
-# input = list()
-#
-# input[[1]] = "~/Desktop/test.csv" # path to data of interest
-# input[[2]] = .5 # threshold value for determining if reactivity is a hit
-# input[[3]] = "bin2/my_df.csv" # path to dictionary
-# input[[4]] = "bin2/total_probability_xr2.csv" # path to total probability matrix
-# input[[5]] = "bin2/unique_probabilities3.csv" # path to unique probability matrix
-# input[[6]] = "bin2/VirScan_filtered_virus_blast_new.csv" # path to virscan alignment matrix
-# input[[7]] = "~/Downloads/test_directory" # output directory path
-# input[[8]] = "Test_Study" # Name of Study
-#
-# AVARDA(input[[1]],as.numeric(input[[2]]),input[[3]],input[[4]],input[[5]],input[[6]],input[[7]],input[[8]])
-#
