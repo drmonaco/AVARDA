@@ -16,4 +16,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports:
     dplyr,
-    ggvis
+    ggvis,
+    tidyverse,
+    igraph,
+    doParallel,
+    foreach
