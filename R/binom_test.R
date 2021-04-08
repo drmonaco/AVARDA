@@ -1,3 +1,6 @@
+#' @export
+
+
 binom_test  = function(v_i,v_xr,v_i_j,N_rank,null_prob,dict){
   v_total = v_i[!v_i %in% v_xr] # all virus i aligning minus the xr
   v_total = v_total[!v_total %in% v_i_j] # all virus i evidence minus any shared with virus j
