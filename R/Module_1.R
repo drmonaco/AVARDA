@@ -1,3 +1,5 @@
+#' @export
+
 Module_1 = function(case_data,blast,total_prob,dict){
 
 case_data.R = case_data %>% filter(.[[2]] > 5) %>% left_join(blast) %>% select(-2) # threshold hits matrix and create blast matrix
