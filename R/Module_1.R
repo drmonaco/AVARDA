@@ -1,8 +1,8 @@
 #' @export
 
-Module_1 = function(case_data,blast,total_prob,dict){
+Module_1 = function(case_data,blast,total_prob,dict,threshold = 5){
 
-case_data.R = case_data %>% filter(.[[2]] > 5) %>% left_join(blast) %>% select(-2) # threshold hits matrix and create blast matrix
+case_data.R = case_data %>% filter(.[[2]] >= threshold) %>% mutate(V1 = as.character(V1))%>% left_join(blast,by = "V1") %>% select(-2) # threshold hits matrix and create blast matrix
 
 case.binary = binary(case_data.R,80) # create binary matrix of evidence alignments
 

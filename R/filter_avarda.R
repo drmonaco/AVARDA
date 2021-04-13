@@ -7,7 +7,7 @@ filter_avarda  = function(edge,vertex){ #independence filter that takes a dictio
   links_filtered = links_filtered %>% filter(V2 %in% nodes)
   x_1_sum = length(nodes)
   if(dim(links_filtered)[1]!=0){
-    net <- as.undirected(graph_from_data_frame(d=links_filtered,vertices=nodes, directed=F) )
+    net <- simplify(as.undirected(graph_from_data_frame(d=links_filtered,vertices=nodes, directed=F) ))
     x = decompose.graph(net)
     x_1_sum = sum(unlist(lapply(x,independence.number)))
   }
