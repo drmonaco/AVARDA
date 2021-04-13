@@ -1,3 +1,10 @@
+#' Take a matrix and binary it
+#'
+#' @param matrix A matrix
+#' @param threshold A number.
+#' @return The binaried version of \code{matrix} setting things above \code{threshold} to 1 and below to zero.
+#' @examples
+#' binary(matrix(c(100,50,0,100),nrow = 2), 70)
 #' @export
 
 binary = function(matrix,threshold){

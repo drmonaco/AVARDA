@@ -1,15 +1,13 @@
 Package: AVARDA
-Title: What the Package Does (One Line, Title Case)
+Title: AntiViral Antibody Response Deconvolution Algorithm (AVARDA), a multi-module software package for analyzing VirScan datasets.
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Daniel",
+           family = "Monaco",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "dmonaco1@jhmi.edu")
+Description: AVARDA provides a probabilistic assessment of infection with species-level resolution by considering sequence alignment of all library peptides to each other and to all human viruses. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
