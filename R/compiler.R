@@ -1,6 +1,6 @@
 #' @export
 
-compiler = function(x,blast,total_prob,dict,threshold = 5){
+compiler = function(x,blast,total_prob,dict){
 
   all = filter_avarda(edge = dict,vertex = x %>% select(1))
   df = data.frame(matrix(ncol = 2,nrow = dim(x)[2]))

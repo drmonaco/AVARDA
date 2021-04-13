@@ -8,10 +8,11 @@ df = list()
 R1 = 2
 key.R = 1
 while(R1<=dim(mod1)[2]){
-  print(dim(mod1)[2])
-  print(R1)
+  #print(dim(mod1)[2])
+  #print(R1)
+ # print("evaluating virus",key.R, "out of",length(mod2))
   vi = colnames(mod1)[R1]
-  print(vi)
+  #print(vi)
   if(R1 == dim(mod1)[2]){
     df[[key.R]] = mod1 %>% select(1,2)
     mod1 = mod1 %>% select(-vi)
