@@ -16,9 +16,9 @@ case.binary.sub.2 = (case.binary.sub.evidence [-1]%>% colSums()) %>% as.data.fra
   case.binary.sub.2 = case.binary.sub.2 %>% mutate(pVal = mapply(bt, case.binary.sub.2$peps, case.binary.sub.2$all_peptides,case.binary.sub.2$V1)) %>%
   arrange(pVal)
 
-case.binary.sub.all = case_data.R %>% filter(.[[1]] %in% case.binary.sub.evidence[[1]]) # unbinaried data for all viruses
+case.sub.all = case_data.R %>% filter(.[[1]] %in% case.binary.sub.evidence[[1]]) %>% select(c(1,csums_index))
 
-output = list(case.binary.sub.evidence,case.binary.sub.2,case.binary.sub.all)
+output = list(case.binary.sub.evidence,case.binary.sub.2,case.sub.all)
 
 return(output)
 }
