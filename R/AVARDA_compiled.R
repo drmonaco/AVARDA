@@ -3,14 +3,15 @@
 #' @import foreach
 #' @import dplyr
 #' @import parallel
+#' @import tibble
 
 
 AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 5,cores){
   if(cores == "all"){
-  registerDoParallel(detectCores())
+  registerDoParallel(parallel::detectCores())
   }
   registerDoParallel(cores)
-  zeta = foreach(R = 2:(dim(case_data)[2]),.combine=rbind) %dopar%{ #cycle through each patient column by column (goal is so be serialized)
+  zeta = foreach(R = 2:(dim(case_data)[2]),.combine=rbind,.packages = c("dplyr","AVARDA")) %dopar%{ #cycle through each patient column by column (goal is so be serialized)
   #zeta = foreach(R = 2:3,.combine=rbind) %dopar%{ #cycle through each patient column by column (goal is so be serialized)
 
     data.R = case_data %>% select(1,R)
