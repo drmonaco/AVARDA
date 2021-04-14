@@ -16,16 +16,16 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
 
     data.R = case_data %>% select(1,R)
     colnames(data.R)[2]
-    x = Module_1(case_data = data.R,blast = blast,total_prob = total,threshold = threshold)
+    x = Module_1(case_data = data.R,blast = blast,total_prob = total_prob,threshold = threshold)
     print("Module1_finished")
     if(dim(x[[2]])[1] != 0){
-      x2 = Module_2(x =x[[3]] ,dict = dict,total = total)
+      x2 = Module_2(x =x[[3]] ,dict = dict,total = total_prob)
       print("Module2_finished")
 
-      x3 = Module_3(x,x2,blast,total,pairwise,dict)
+      x3 = Module_3(mod1 = x,mod2 = x2,blast = blast,total_prob = total_prob,pairwise = pairwise,dict = dict)
       print("Module3_finished")
 
-      x4 =sapply(x3,compiler,blast = blast,total_prob = total,dict = dict) %>% t() %>% as.data.frame() %>% mutate(pBH = p.adjust(pVal))
+      x4 =sapply(x3,compiler,blast = blast,total_prob = total_prob,dict = dict) %>% t() %>% as.data.frame() %>% mutate(pBH = p.adjust(pVal))
       x4 = x4 %>% mutate(Sample_ID = colnames(data.R)[2])
       return(x4)
     }
