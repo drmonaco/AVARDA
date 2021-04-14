@@ -13,9 +13,8 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
   registerDoParallel(cores)
   zeta = foreach(R = 2:(dim(case_data)[2]),.combine=rbind,.packages = c("dplyr","AVARDA")) %dopar%{ #cycle through each patient column by column (goal is so be serialized)
   #zeta = foreach(R = 2:3,.combine=rbind) %dopar%{ #cycle through each patient column by column (goal is so be serialized)
-
+    print(R)
     data.R = case_data %>% select(1,R)
-    colnames(data.R)[2]
     x = Module_1(case_data = data.R,blast = blast,total_prob = total_prob,threshold = threshold)
     print("Module1_finished")
     if(dim(x[[2]])[1] != 0){
@@ -30,7 +29,7 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
       return(x4)
     }
     if(!is.null(dim(x)[[3]])){
-      return(NULL)
+      return("NULL")
       }
     }
   return(zeta)
