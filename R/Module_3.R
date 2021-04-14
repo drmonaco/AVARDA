@@ -43,7 +43,7 @@ while(R1<=dim(mod1)[2]){
   case = mod1 %>% select(R1)
   df[[key.R]] = mod1 %>% select(1,2)
   mod1 = mod1 %>% filter(!(case > 0 & rest == 0)) %>% select(-vi)
-  f = Module_2(x =mod1 ,dict = dict,total = total) %>% select(virus) %>% unlist() %>% as.character()
+  f = Module_2(x =mod1 ,dict = dict,total_prob = total_prob) %>% select(virus) %>% unlist() %>% as.character()
   mod1 = mod1 %>% select(c(V1,f))
   #R1 = R1+1
   }
