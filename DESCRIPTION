@@ -1,5 +1,5 @@
 Package: AVARDA
-Title: AntiViral Antibody Response Deconvolution Algorithm (AVARDA), a multi-module software package for analyzing VirScan datasets.
+Title: AntiViral Antibody Response Deconvolution Algorithm (AVARDA), a multi-module software package for analyzing VirScan datasets
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Daniel",

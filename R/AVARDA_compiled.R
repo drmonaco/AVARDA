@@ -1,6 +1,8 @@
 #' @export
 #' @import doParallel
 #' @import foreach
+#' @import dplyr
+
 
 AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 5){
   registerDoParallel(detectCores())
