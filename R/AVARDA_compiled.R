@@ -19,7 +19,7 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
     x = Module_1(case_data = data.R,blast = blast,total_prob = total_prob,threshold = threshold)
     print("Module1_finished")
     if(dim(x[[2]])[1] != 0){
-      x2 = Module_2(x =x[[3]] ,dict = dict,total = total_prob)
+      x2 = Module_2(x =x[[3]] ,dict = dict,total_prob = total_prob)
       print("Module2_finished")
 
       x3 = Module_3(mod1 = x,mod2 = x2,blast = blast,total_prob = total_prob,pairwise = pairwise,dict = dict)
