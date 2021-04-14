@@ -21,8 +21,8 @@ csums_index = which(case.binary[-1] %>% colSums()  >= 5) + 1 # get just viruses 
 
 case.binary.sub.evidence = case.binary %>% select(c(1,csums_index)) # subset evidence peptides above index - binary matrix of evidence peptides by alignnment
 
-case.binary.sub.2 = (case.binary.sub.evidence [-1]%>% colSums()) %>% as.data.frame() %>% rename(peps = ".") %>% mutate(all_peptides = dim(case.binary.sub.evidence)[1]) %>%
-  rownames_to_column() %>% left_join(total_prob, "rowname")
+case.binary.sub.2 = (case.binary.sub.evidence [-1]%>% colSums()) %>% as.data.frame() %>% rename(peps = ".") %>%
+  rownames_to_column() %>% mutate(all_peptides = dim(case.binary.sub.evidence)[1])  %>% left_join(total_prob, "rowname")
 
   case.binary.sub.2 = case.binary.sub.2 %>% mutate(pVal = mapply(bt, case.binary.sub.2$peps, case.binary.sub.2$all_peptides,case.binary.sub.2$V1)) %>%
   arrange(pVal)
