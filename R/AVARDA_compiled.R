@@ -6,7 +6,7 @@
 #' @import tibble
 
 
-AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 5,cores){
+AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 5,cores,mod_3){
   if(cores == "all"){
   registerDoParallel(parallel::detectCores())
   }
@@ -22,7 +22,7 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
       x2 = Module_2(x =x[[3]] ,dict = dict,total_prob = total_prob)
       print("Module2_finished")
 
-      x3 = Module_3(mod1 = x,mod2 = x2,blast = blast,total_prob = total_prob,pairwise = pairwise,dict = dict)
+      x3 = Module_3(mod1 = x,mod2 = x2,blast = blast,total_prob = total_prob,pairwise = pairwise,dict = dict,mod_3)
       print("Module3_finished")
 
       x4 =sapply(x3,compiler,blast = blast,total_prob = total_prob,dict = dict) %>% t() %>% as.data.frame() %>% mutate(pBH = p.adjust(pVal))

@@ -1,7 +1,7 @@
 #' @export
 #' @import igraph
 
-Module_3 = function(mod1,mod2,blast,total_prob,pairwise,dict){
+Module_3 = function(mod1,mod2,blast,total_prob,pairwise,dict,mod_3 = "run"){
 mod2 = mod2 %>% arrange(pVal_f) %>% select(virus) %>% unlist %>% as.character()
 mod1 = mod1[[3]] %>% select(1,mod2)
 df = list()
@@ -13,11 +13,11 @@ while(R1<=dim(mod1)[2]){
  # print("evaluating virus",key.R, "out of",length(mod2))
   vi = colnames(mod1)[R1]
   #print(vi)
-  if(R1 == dim(mod1)[2]){
+  if(R1 == dim(mod1)[2] | mod_3 == "skip"){
     df[[key.R]] = mod1 %>% select(1,2)
     mod1 = mod1 %>% select(-vi)
   }
-  if(R1 <= dim(mod1)[2]){
+  if(R1 <= dim(mod1)[2] & mod_3 != "skip"){
   for(R2 in (R1+1):dim(mod1)[2]){
     comp = pairwise_comparator(mod1 %>% select(c(1,R1,R2)),pairwise,dict)
     if(comp[[1]]<.05 & comp[[2]]<.05){  #if both significant
