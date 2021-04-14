@@ -6,8 +6,10 @@
 #' @param threshold A number
 #' @return Returns a three element. Element 1 is matrix of all peptide enriched above \code{threshold} in \code{case_data} showing all alignments defined in \code{blast}, thresholded by a predetermined value. Element 2 shows a list of viruses from \code{blast} with potential reactivity. Element 3 is similar to element 1 but not thresholded.
 #' @examples
-
 #' @export
+#' @import dplyr
+#' @import parallel
+#' @import tibble
 
 Module_1 = function(case_data,blast,total_prob,threshold = 5){
 
