@@ -14,14 +14,14 @@ pairwise_comparator = function(comp,pairwise,dict){
   vi_f = evidence %>% filter(.[[2]] >0) %>% select(1) %>% filter_avarda(edge = dict)
   vj_f = evidence %>% filter(.[[3]] >0) %>% select(1) %>% filter_avarda(edge = dict)
 
-  if(vi_f > 3 & vj_f >3){
+  if(vi_f >= 3 & vj_f >= 3){
 
   all_i_f = comp %>% select(1) %>%
     filter(!(V1 %in% (comp %>% filter(.[[3]] >0) %>% select(1) %>% unlist))) %>%  #remove all v_j peptides xr and evidence
-    filter(!(V1 %in% (comp %>% filter(.[[2]] >0 & .[[2]] <80) %>% select(1) %>% unlist))) %>%  #remove v_j xr peptides
+    filter(!(V1 %in% (comp %>% filter(.[[2]] >0 & .[[2]] <80) %>% select(1) %>% unlist))) %>%  #remove v_i xr peptides
     filter_avarda(edge = dict)
   all_j_f = comp %>% select(1) %>%
-    filter(!(V1 %in% (comp %>% filter(.[[2]] >0) %>% select(1) %>% unlist))) %>%  #remove all v_j peptides xr and evidence
+    filter(!(V1 %in% (comp %>% filter(.[[2]] >0) %>% select(1) %>% unlist))) %>%  #remove all v_i peptides xr and evidence
     filter(!(V1 %in% (comp %>% filter(.[[3]] >0 & .[[3]] <80) %>% select(1) %>% unlist))) %>%  #remove v_j xr peptides
     filter_avarda(edge = dict)
 

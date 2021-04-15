@@ -1,4 +1,4 @@
-#' Perform a binomial test
+#' Perform AVARDA Module 1 Analysis - Accounting for peptide - virus xreactivity
 #'
 #' @param case_data A data.frame
 #' @param blast A data.frame
@@ -17,8 +17,8 @@ case_data.R = case_data %>% filter(.[[2]] >= threshold) %>% mutate(V1 = as.chara
 
 case.binary = binary(case_data.R,80) # create binary matrix of evidence alignments
 
-csums_index = which(case.binary[-1] %>% colSums()  >= 5) + 1 # get just viruses that are enriched
-
+csums_index = which(case.binary[-1] %>% colSums()  > 3) + 1 # get just viruses that are enriched
+# think about thresholding
 case.binary.sub.evidence = case.binary %>% select(c(1,csums_index)) # subset evidence peptides above index - binary matrix of evidence peptides by alignnment
 
 case.binary.sub.2 = (case.binary.sub.evidence [-1]%>% colSums()) %>% as.data.frame() %>% rename(peps = ".") %>%

@@ -1,6 +1,17 @@
+#' Perform a binomial test
+#'
+#' @param case_data A data.frame
+#' @param blast A data.frame
+#' @param total_prob A data.frame
+#' @param threshold A number
+#' @return Returns a three element. Element 1 is matrix of all peptide enriched above \code{threshold} in \code{case_data} showing all alignments defined in \code{blast}, thresholded by a predetermined value. Element 2 shows a list of viruses from \code{blast} with potential reactivity. Element 3 is similar to element 1 but not thresholded.
+#' @examples
 #' @export
+#' @import dplyr
+#' @import parallel
+#' @import tibble
 #' @import igraph
-
+#'
 filter_avarda  = function(edge,vertex){ #independence filter that takes a dictionary (defined above) and a set of nodes and tells the minimal number of unique epitopes
   nodes = unlist(vertex)
   links_filtered = edge %>% filter(V1 %in% nodes)
