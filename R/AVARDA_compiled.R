@@ -43,13 +43,13 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
       x4 = x4 %>% mutate(Sample_ID = colnames(data.R)[2])
       return(x4)
       }
+      if(dim(x2)[1]== 0){
+        return(NULL)
+      }
       }
     if(!is.null(dim(x)[[3]])){
       return(NULL)
       }
-    if(dim(x2)[1]== 0){
-      return(NULL)
-    }
   }
   return(zeta)
 }
