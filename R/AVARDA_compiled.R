@@ -34,18 +34,22 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
       tic("Module2_finished")
       x2 = Module_2(x =x[[3]] ,dict = dict,total_prob = total_prob)
       toc()
-
-      tic("Module2_finished")
+      if(dim(x2)[1]!= 0){
+      tic("Module3_finished")
       x3 = Module_3(mod1 = x,mod2 = x2,blast = blast,total_prob = total_prob,pairwise = pairwise,dict = dict,mod_3)
       toc()
 
       x4 =sapply(x3,compiler,blast = blast,total_prob = total_prob,dict = dict) %>% t() %>% as.data.frame() %>% mutate(pBH = p.adjust(pVal))
       x4 = x4 %>% mutate(Sample_ID = colnames(data.R)[2])
       return(x4)
-    }
-    if(!is.null(dim(x)[[3]])){
-      return("NULL")
       }
+      }
+    if(!is.null(dim(x)[[3]])){
+      return(NULL)
+      }
+    if(dim(x2)[1]== 0){
+      return(NULL)
     }
+  }
   return(zeta)
 }
