@@ -19,6 +19,7 @@
 #' @export
 
 AVARDA_compiled_mac = function(case_data,blast,total_prob,pairwise,dict,threshold = 5,cores,mod_3){
+
   if(cores == "all"){
     registerDoParallel(parallel::detectCores())
   }
