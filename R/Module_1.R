@@ -6,6 +6,7 @@
 #' @param threshold A number
 #' @return Returns a three element. Element 1 is matrix of all peptide enriched above \code{threshold} in \code{case_data} showing all alignments defined in \code{blast}, thresholded by a predetermined value. Element 2 shows a list of viruses from \code{blast} with potential reactivity. Element 3 is similar to element 1 but not thresholded.
 #' @examples
+#' \dontrun{}
 #' @export
 #' @import dplyr
 #' @import parallel
@@ -13,7 +14,7 @@
 
 Module_1 = function(case_data,blast,total_prob,threshold = 5){
 
-case_data.R = case_data %>% filter(.[[2]] >= threshold) %>% mutate(V1 = as.character(V1))%>% left_join(blast,by = "V1") %>% select(-2) # threshold hits matrix and create blast matrix
+case_data.R = case_data %>% filter(.[[2]] >= threshold) %>% mutate(V1 = as.character(V1))%>% inner_join(blast,by = "V1") %>% select(-2) # threshold hits matrix and create blast matrix
 
 case.binary = binary(case_data.R,80) # create binary matrix of evidence alignments
 

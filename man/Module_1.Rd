@@ -21,3 +21,6 @@ Returns a three element. Element 1 is matrix of all peptide enriched above \code
 \description{
 Perform AVARDA Module 1 Analysis - Accounting for peptide - virus xreactivity
 }
+\examples{
+\dontrun{}
+}

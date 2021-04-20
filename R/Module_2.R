@@ -12,9 +12,9 @@ Module_2 = function(x,dict,total_prob){
   }
   }
   df$all_f = all
-  df = df %>% left_join(total_prob %>% rename(virus = "rowname"),by = "virus") %>% filter(!is.na(virus))
+  df = df %>% left_join(total_prob %>% rename(virus = "rowname"),by = "virus") %>% filter(!is.na(virus))%>% filter(filtered>2)
 
-  df = df %>% filter(!is.null(virus))%>% mutate(pVal_f = mapply(bt, df$filtered, df$all_f,df$V1)) %>% arrange(pVal_f)
+  df = df %>% filter(!is.null(virus)) %>% mutate(pVal_f = mapply(bt, df$filtered, df$all_f,df$V1)) %>% arrange(pVal_f)
   return(df)
 }
 

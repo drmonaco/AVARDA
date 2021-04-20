@@ -21,3 +21,6 @@ Returns a three element. Element 1 is matrix of all peptide enriched above \code
 \description{
 Perform a binomial test
 }
+\examples{
+\dontrun{}
+}

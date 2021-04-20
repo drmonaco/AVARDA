@@ -30,7 +30,7 @@ pairwise_comparator = function(comp,pairwise,dict){
   output = list(prob_vi,prob_vj)
   return(output)
   }
-  if(vi_f > 3 & vj_f <3){
+  if(vi_f >= 3 & vj_f <3){
     all_i_f = comp %>% select(1) %>%
       filter(!(V1 %in% (comp %>% filter(.[[3]] >0) %>% select(1) %>% unlist))) %>%  #remove all v_j peptides xr and evidence
       filter(!(V1 %in% (comp %>% filter(.[[2]] >0 & .[[2]] <80) %>% select(1) %>% unlist))) %>%  #remove v_j xr peptides
@@ -39,7 +39,7 @@ pairwise_comparator = function(comp,pairwise,dict){
     output = list(prob_vi,1)
     return(output)
   }
-  if(vi_f < 3 & vj_f >3){
+  if(vi_f < 3 & vj_f >=3){
     all_j_f = comp %>% select(1) %>%
       filter(!(V1 %in% (comp %>% filter(.[[2]] >0) %>% select(1) %>% unlist))) %>%  #remove all v_j peptides xr and evidence
       filter(!(V1 %in% (comp %>% filter(.[[3]] >0 & .[[3]] <80) %>% select(1) %>% unlist))) %>%  #remove v_j xr peptides

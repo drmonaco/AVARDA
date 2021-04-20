@@ -6,6 +6,7 @@
 #' @param threshold A number
 #' @return Returns a three element. Element 1 is matrix of all peptide enriched above \code{threshold} in \code{case_data} showing all alignments defined in \code{blast}, thresholded by a predetermined value. Element 2 shows a list of viruses from \code{blast} with potential reactivity. Element 3 is similar to element 1 but not thresholded.
 #' @examples
+#' \dontrun{}
 #' @export
 #' @import dplyr
 #' @import parallel
@@ -28,7 +29,7 @@ filter_avarda  = function(edge,vertex){ #independence filter that takes a dictio
     if(length(x_2) >0){
       for(R in 1:length(x_2)){
         x_2_r = x_2[[R]]
-        while(max(degree(x_2_r))>3){
+        while(max(degree(x_2_r))>0){
           toss = degree(x_2_r)==max(degree(x_2_r))
           drop = V(x_2_r)[which(toss == TRUE)[1]]
           x_2_r = delete_vertices(x_2_r, drop)
