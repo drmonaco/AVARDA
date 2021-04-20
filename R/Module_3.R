@@ -9,7 +9,7 @@ df = list()
 R1 = 2
 key.R = 1
 while(R1<=dim(mod1)[2]){
-  print(dim(mod1)[2])
+  #print(dim(mod1)[2])
   # print(c("R1_",R1))
   # print("evaluating virus",key.R, "out of",length(mod2))
   vi = colnames(mod1)[R1]

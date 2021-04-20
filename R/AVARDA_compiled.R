@@ -27,17 +27,17 @@ AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 
   #zeta = foreach(R = 2:3,.combine=rbind) %dopar%{ #cycle through each patient column by column (goal is so be serialized)
     print(R)
     data.R = case_data %>% select(1,R)
-    tic("Module1_finished")
+    # tic("Module1_finished")
     x = Module_1(case_data = data.R,blast = blast,total_prob = total_prob,threshold = threshold)
-    toc()
+    # toc()
     if(dim(x[[2]])[1] != 0){
-      tic("Module2_finished")
+      # tic("Module2_finished")
       x2 = Module_2(x =x[[3]] ,dict = dict,total_prob = total_prob)
-      toc()
+      # toc()
       if(dim(x2)[1]!= 0){
       tic("Module3_finished")
       x3 = Module_3(mod1 = x,mod2 = x2,blast = blast,total_prob = total_prob,pairwise = pairwise,dict = dict,mod_3)
-      toc()
+      # toc()
 
       x4 =sapply(x3,compiler,blast = blast,total_prob = total_prob,dict = dict) %>% t() %>% as.data.frame() %>% mutate(pBH = p.adjust(pVal))
       x4 = x4 %>% mutate(Sample_ID = colnames(data.R)[2])
