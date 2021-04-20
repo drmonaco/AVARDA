@@ -20,21 +20,21 @@ while(R1<=dim(mod1)[2]){
   }
   if(R1 <= dim(mod1)[2] & mod_3 != "skip"){
   pb <- progress_bar$new(total = dim(mod1)[2])
+
   for(R2 in (R1+1):dim(mod1)[2]){
     pb$tick()
-    # print(c("R2_",R2))
     comp = pairwise_comparator(mod1 %>% select(c(1,R1,R2)),pairwise,dict)
     if(comp[[1]]<.05 & comp[[2]]<.05){  #if both significant
 
     }
     if(comp[[1]]<.05 & comp[[2]]>.05){ # if v_i is significant
-    #index = which(mod1[,..R1] > 0)
-    index = which(mod1[,R1] > 0)
+    index = which(mod1[,..R1] > 0)
+    #index = which(mod1[,R1] > 0)
     mod1[index,R2] = 0
     }
     if(comp[[1]]>.05 & comp[[2]]<.05){ # if v_j is significant
-    #index = which(mod1[,..R2] > 0)
-    index = which(mod1[,R2] > 0)
+    index = which(mod1[,..R2] > 0)
+    #index = which(mod1[,R2] > 0)
     mod1[index,R1] = 0
 
     }
