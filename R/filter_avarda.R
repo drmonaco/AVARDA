@@ -18,7 +18,7 @@ filter_avarda  = function(edge,vertex){ #independence filter that takes a dictio
   links_filtered = links_filtered %>% filter(V2 %in% nodes)
   x_1_sum = length(nodes)
   if(dim(links_filtered)[1]!=0){
-    net <- as.undirected(graph_from_data_frame(d=links_filtered,vertices=nodes, directed=F) )
+    net <- simplify(as.undirected(graph_from_data_frame(d=links_filtered,vertices=nodes, directed=F) ))
     x = decompose.graph(net)
     x_1 = x[sapply(x,vcount)<30]
     x_1_sum  = sum(unlist(lapply(x_1,independence.number)))
@@ -29,14 +29,15 @@ filter_avarda  = function(edge,vertex){ #independence filter that takes a dictio
       for(R in 1:length(x_2)){
         x_2_r = x_2[[R]]
         while(max(degree(x_2_r))>3){
-
           toss = degree(x_2_r)==max(degree(x_2_r))
-          x_2_r = delete_vertices(x_2_r, V(x_2_r)[which(toss == TRUE)[1]])
+          drop = V(x_2_r)[which(toss == TRUE)[1]]
+          x_2_r = delete_vertices(x_2_r, drop)
         }
         x_l = decompose.graph(x_2_r)
         temp[R] = sum(unlist(lapply(x_l,independence.number)))
       }
     }
+    #print(sum(x_1_sum)+sum(temp))
     return(sum(x_1_sum)+sum(temp))
   }
   if(dim(links_filtered)[1]==0){

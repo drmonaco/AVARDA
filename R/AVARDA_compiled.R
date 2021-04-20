@@ -1,10 +1,21 @@
-#' @export
+#' Primary function to run AVARDA modules together
 #' @import doParallel
 #' @import foreach
 #' @import dplyr
 #' @import parallel
 #' @import tibble
-
+#' @param case_data A data.frame of PhIPseq data that identifies hits by some theshold, can be binary hits or some value
+#' @param blast A data.frame listing the blastp, or tblastn, alignments of PhIP-seq peptides to organisms of interact
+#' @param total_prob A data.frame listing the degree of representation each virus has in the phip-seq library
+#' @param pairwise A number.
+#' @param dict A number.
+#' @param threshold A number.
+#' @param cores A number.
+#' @param mod_3 A number.
+#' @return Output of AVARDA algorithm; a data frame listing the likelihood of each virus causing in infection in a given sample
+#' @examples
+#' \dontrun{do later}
+#' @export
 
 AVARDA_compiled = function(case_data,blast,total_prob,pairwise,dict,threshold = 5,cores,mod_3){
   if(cores == "all"){
