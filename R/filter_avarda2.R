@@ -13,7 +13,8 @@
 #' @import tibble
 #' @import igraph
 #'
-filter_avarda  = function(edge,vertex){ #independence filter that takes a dictionary (defined above) and a set of nodes and tells the minimal number of unique epitopes
+
+filter_avarda2  = function(edge,vertex){ #independence filter that takes a dictionary (defined above) and a set of nodes and tells the minimal number of unique epitopes
   nodes = unlist(vertex)
   links_filtered = edge %>% filter(V1 %in% nodes)
   links_filtered = links_filtered %>% filter(V2 %in% nodes)
@@ -34,13 +35,13 @@ filter_avarda  = function(edge,vertex){ #independence filter that takes a dictio
           drop = V(x_2_r)[which(toss == TRUE)]
           x_2_r = delete_vertices(x_2_r, drop)
         }
-        while(max(degree(x_2_r))>3){
+        while(max(degree(x_2_r))>0){
           toss = degree(x_2_r)==max(degree(x_2_r))
           drop = V(x_2_r)[which(toss == TRUE)[1]]
           x_2_r = delete_vertices(x_2_r, drop)
         }
-        x_l = decompose.graph(x_2_r)
-        temp[R] = sum(unlist(lapply(x_l,independence.number)))
+        #x_l = decompose.graph(x_2_r)
+        temp[R] = vcount(x_2_r)
       }
     }
     #print(sum(x_1_sum)+sum(temp))
