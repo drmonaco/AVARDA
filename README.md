@@ -1,12 +1,15 @@
 # AVARDA
 
-#AVARDA Script
+Here we introduce the AntiViral Antibody Response Deconvolution Algorithm (AVARDA), a systematic framework for probabilistic analysis of highly multiplexed antiviral antibody epitope reactivity data. AVARDA integrates three key modules to generate a conservative and probabilistic assessment of antibody responses. The first module uses sequence alignment to define each reactive peptide’s relationship to a comprehensive database of all human viral genomes, which have been translated in all six reading frames. This permits a conservative elaboration of all peptide reactivities that could be associated with each potential viral infection. The second module constructs a sequence homology-based network graph for each virus’s reactive peptides, so as to define the minimum number of independent specificities (response breadth) required to produce the graph. The third module iteratively assigns each peptide to its most likely associated viral infection(s), according to a null model that considers the overall representation of each virus in the VirScan library. We permit individual peptides to be associated with multiple distinct infections, provided there is sufficient evidence for each viral infection on its own (i.e. in the absence of the shared peptides). AVARDA also indicates uncertainty in peptide-virus assignments when there is insufficient evidence to discriminate between infections by related viruses, but when there is sufficient evidence to conclude that an infection has indeed occurred. Linking these modules, the final output of AVARDA provides adjusted p-values for multiple hypothesis testing for exposure to each virus, along with the associated breadths of the antibody responses and the relationships between the reactive peptides.
 
+## AVARDA Script
 
 ### Instructions
-To run avarda place directory in preferred location and set input arguments as absolute paths to various above listed files.
+To run avarda download AVARDA.R and bin2 folder and place in desired directory location.
 
-If using names other than Larman Lab names replace the first column of avarda_names.csv with other peptide names.
+If using names other than Larman Lab names (i.e. VirScan_Lar_XXXXX) replace the first column of avarda_names.csv with other peptide names.
+
+Set Inputs to run specific values
 
 
 ### Inputs 
